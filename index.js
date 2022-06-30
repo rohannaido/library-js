@@ -75,7 +75,7 @@ function addBookToTable(book){
     newReadCell.appendChild(newReadButton);
     newReadButton.addEventListener("click", toggleReadUnread);
 
-    newDeleteButton.innerText = "Delete";
+    newDeleteButton.innerText = "X";
     newDeleteButton.classList = "book-delete-button";
     newDeleteButton.setAttribute("data-key", key);
     newDeleteCell.appendChild(newDeleteButton);
