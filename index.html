@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="header-div">
+            <h1>My Book Library</h1>
+        </div>
+        <div class="content-div">
+            <div class="sidebar-div">
+                <form class="new-book-info">
+                    <label for="title">Title: </label>
+                    <input class="title-input" type="text" name="title" id="title">
+                    <label for="author">Author: </label>
+                    <input class="author-input" type="text" name="author" id="author">
+                    <label for="pagecount">No. of Pages: </label>
+                    <input class="pagecount-input" type="number" name="pagecount" id="pagecount">
+                    
+                    <div>
+                        <fieldset>
+                            <legend>Read / Unread:</legend>
+                        
+                            <div>
+                              <input type="radio" id="read" name="read" value="read"
+                                     checked>
+                              <label for="read">Read</label>
+                            </div>
+                        
+                            <div>
+                              <input type="radio" id="unread" name="read" value="unread">
+                              <label for="read">Unread</label>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <button class="new-book-submit">Add Book</button>
+                </form>
+            </div>
+            <div class="books-content-div">
+                <div class="books-table-div">
+                    <table>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Pages</th>
+                            <th>Read/Unread</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>
