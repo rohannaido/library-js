@@ -7,7 +7,8 @@ if(localStorage.getItem("LIBRARY_BOOKS")){
 const titleInput = document.querySelector(".title-input");
 const authorInput = document.querySelector(".author-input");
 const pagesInput = document.querySelector(".pagecount-input");
-const booksTable = document.querySelector(".books-table-div table tbody");
+const booksTable = document.querySelector(".books-table-div table");
+let booksTableBody = document.querySelector(".books-table-div table tbody");
 const readInput = document.querySelector(".new-book-info input[type='radio']");
 
 let key = 0;
@@ -42,6 +43,10 @@ function addBookToLibrary(e){
 
 //Display all the books
 function displayLibrary() {
+    booksTableBody.remove();
+    booksTable.appendChild(document.createElement("tbody"));
+    booksTableBody = document.querySelector(".books-table-div table tbody");
+
     for(let i = 0; i < myLibrary.length; i++){
         addBookToTable(myLibrary[i]);
     }
@@ -49,7 +54,6 @@ function displayLibrary() {
 
 //Add book to table element in HTML
 function addBookToTable(book){
-    console.log(key);
     let newRow = document.createElement("tr");
     
     let newTitleCell = document.createElement("td");
@@ -75,6 +79,7 @@ function addBookToTable(book){
     newDeleteButton.classList = "book-delete-button";
     newDeleteButton.setAttribute("data-key", key);
     newDeleteCell.appendChild(newDeleteButton);
+    newDeleteButton.addEventListener("click", deleteItem);
     
     newRow.appendChild(newTitleCell);
     newRow.appendChild(newAuthorCell);
@@ -82,7 +87,7 @@ function addBookToTable(book){
     newRow.appendChild(newReadCell);
     newRow.appendChild(newDeleteCell);
     
-    booksTable.appendChild(newRow);
+    booksTableBody.appendChild(newRow);
     key++;
 }
 
@@ -92,4 +97,12 @@ function toggleReadUnread(e){
     myLibrary[index].read = !myLibrary[index].read;
     e.target.innerText = myLibrary[index].read ? "Read" : "Unread";
     saveLibrary();
+}
+
+function deleteItem(e){
+    let index = (e.target.getAttribute("data-key"));
+    myLibrary.splice(index, 1);
+    saveLibrary();
+    key = 0;
+    displayLibrary();
 }
