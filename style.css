@@ -89,11 +89,12 @@ table{
     box-shadow: 2px 2px 3px 1px #888888;
 }
 
-th, td {
-    margin: 0;
+td {
+    padding: 0 1rem;
 }
 
 th{
+    margin: 0;
     width: 120px;
     background-color: cadetblue;
     color: white;
@@ -125,6 +126,10 @@ tbody tr td:nth-child(5), tbody tr td:nth-child(4){
     padding: 0.5rem;
     cursor: pointer;
     width: 2rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .book-delete-button:hover {
