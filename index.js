@@ -12,11 +12,11 @@ let booksTableBody = document.querySelector(".books-table-div table tbody");
 const readInput = document.querySelector(".new-book-info input[type='radio']");
 
 let key = 0;
-const newBookBtn = document.querySelector(".new-book-submit")
-
+// const newBookBtn = document.querySelector(".new-book-submit")
+const form = document.querySelector("form");
 displayLibrary();
 
-newBookBtn.addEventListener("click", addBookToLibrary)
+form.addEventListener("submit", addBookToLibrary)
 
 
 function saveLibrary(){
@@ -32,11 +32,16 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+Book.prototype.toggleReadUnreadData = function() {
+    this.read = !this.read;
+}
+
 //Add single book to library
 function addBookToLibrary(e){
     e.preventDefault();
     let newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, readInput.checked);
     myLibrary.push(newBook);
+    console.log(newBook)
     addBookToTable(newBook);
     saveLibrary();
 }
@@ -94,8 +99,11 @@ function addBookToTable(book){
 //Toggle Read Unread function
 function toggleReadUnread(e){
     let index = (e.target.getAttribute("data-key"));
-    myLibrary[index].read = !myLibrary[index].read;
+    // myLibrary[index].read = !myLibrary[index].read;
+    console.log(myLibrary[index].prototype);
+    myLibrary[index].toggleReadUnreadData();
     e.target.innerText = myLibrary[index].read ? "Read" : "Unread";
+    displayLibrary();
     saveLibrary();
 }
 
